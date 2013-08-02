@@ -5,7 +5,6 @@ import static org.lwjgl.opengl.GL13.*;
 
 import java.awt.*;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.src.*;
 
 import org.lwjgl.input.Mouse;
@@ -15,10 +14,7 @@ public class RenderUtil {
 	public static void scissorBox(int x, int y, int xend, int yend) {
 		int width = xend - x;
 		int height = yend - y;
-		ScaledResolution sr = new ScaledResolution(
-				Minecraft.getMinecraft().gameSettings,
-				Minecraft.getMinecraft().displayWidth,
-				Minecraft.getMinecraft().displayHeight);
+		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft().gameSettings, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
 		int factor = sr.getScaleFactor();
 		int bottomY = Minecraft.getMinecraft().currentScreen.height - yend;
 		glScissor(x * factor, bottomY * factor, width * factor, height * factor);
@@ -37,8 +33,7 @@ public class RenderUtil {
 		glShadeModel(GL_SMOOTH);
 	}
 
-	public static void drawLine(double startX, double startY, double startZ,
-			double endX, double endY, double endZ, float thickness) {
+	public static void drawLine(double startX, double startY, double startZ, double endX, double endY, double endZ, float thickness) {
 		glPushMatrix();
 		setupLineSmooth();
 		glLineWidth(thickness);
@@ -56,25 +51,19 @@ public class RenderUtil {
 		glPopMatrix();
 	}
 
-	public static void drawTexturedModalRect(int par1, int par2, int par3,
-			int par4, int par5, int par6) {
+	public static void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6) {
 		float var7 = 0.00390625F;
 		float var8 = 0.00390625F;
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV((par1 + 0), (par2 + par6), 0, ((par3 + 0) * var7),
-				((par4 + par6) * var8));
-		var9.addVertexWithUV((par1 + par5), (par2 + par6), 0,
-				((par3 + par5) * var7), ((par4 + par6) * var8));
-		var9.addVertexWithUV((par1 + par5), (par2 + 0), 0,
-				((par3 + par5) * var7), ((par4 + 0) * var8));
-		var9.addVertexWithUV((par1 + 0), (par2 + 0), 0, ((par3 + 0) * var7),
-				((par4 + 0) * var8));
+		var9.addVertexWithUV((par1 + 0), (par2 + par6), 0, ((par3 + 0) * var7), ((par4 + par6) * var8));
+		var9.addVertexWithUV((par1 + par5), (par2 + par6), 0, ((par3 + par5) * var7), ((par4 + par6) * var8));
+		var9.addVertexWithUV((par1 + par5), (par2 + 0), 0, ((par3 + par5) * var7), ((par4 + 0) * var8));
+		var9.addVertexWithUV((par1 + 0), (par2 + 0), 0, ((par3 + 0) * var7), ((par4 + 0) * var8));
 		var9.draw();
 	}
 
-	public static void drawTexturedModalRect(int textureId, int posX, int posY,
-			int width, int height) {
+	public static void drawTexturedModalRect(int textureId, int posX, int posY, int width, int height) {
 		double halfHeight = (height / 2);
 		double halfWidth = (width / 2);
 
@@ -111,21 +100,16 @@ public class RenderUtil {
 		int r1 = rgba1 & 0xFF, g1 = rgba1 >> 8 & 0xFF, b1 = rgba1 >> 16 & 0xFF, a1 = rgba1 >> 24 & 0xFF;
 		int r2 = rgba2 & 0xFF, g2 = rgba2 >> 8 & 0xFF, b2 = rgba2 >> 16 & 0xFF, a2 = rgba2 >> 24 & 0xFF;
 
-		int r = (int) (r1 < r2 ? r1 + (r2 - r1) * percent : r2 + (r1 - r2)
-				* percent);
-		int g = (int) (g1 < g2 ? g1 + (g2 - g1) * percent : g2 + (g1 - g2)
-				* percent);
-		int b = (int) (b1 < b2 ? b1 + (b2 - b1) * percent : b2 + (b1 - b2)
-				* percent);
-		int a = (int) (a1 < a2 ? a1 + (a2 - a1) * percent : a2 + (a1 - a2)
-				* percent);
+		int r = (int) (r1 < r2 ? r1 + (r2 - r1) * percent : r2 + (r1 - r2) * percent);
+		int g = (int) (g1 < g2 ? g1 + (g2 - g1) * percent : g2 + (g1 - g2) * percent);
+		int b = (int) (b1 < b2 ? b1 + (b2 - b1) * percent : b2 + (b1 - b2) * percent);
+		int a = (int) (a1 < a2 ? a1 + (a2 - a1) * percent : a2 + (a1 - a2) * percent);
 
 		return r | g << 8 | b << 16 | a << 24;
 	}
 
 	public static void setColor(Color c) {
-		glColor4f(c.getRed() / 255f, c.getGreen() / 255f, c.getBlue() / 255f,
-				c.getAlpha() / 255f);
+		glColor4f(c.getRed() / 255f, c.getGreen() / 255f, c.getBlue() / 255f, c.getAlpha() / 255f);
 	}
 
 	public static Color toColor(int rgba) {
@@ -134,8 +118,7 @@ public class RenderUtil {
 	}
 
 	public static int toRGBA(Color c) {
-		return c.getRed() | c.getGreen() << 8 | c.getBlue() << 16
-				| c.getAlpha() << 24;
+		return c.getRed() | c.getGreen() << 8 | c.getBlue() << 16 | c.getAlpha() << 24;
 	}
 
 	public static void setColor(int rgba) {
@@ -149,12 +132,9 @@ public class RenderUtil {
 		if(scale == 0)
 			scale = 1000;
 		int scaleFactor = 0;
-		while(scaleFactor < scale
-				&& minecraft.displayWidth / (scaleFactor + 1) >= 320
-				&& minecraft.displayHeight / (scaleFactor + 1) >= 240)
+		while(scaleFactor < scale && minecraft.displayWidth / (scaleFactor + 1) >= 320 && minecraft.displayHeight / (scaleFactor + 1) >= 240)
 			scaleFactor++;
-		return new Point(Mouse.getX() / scaleFactor, minecraft.displayHeight
-				/ scaleFactor - Mouse.getY() / scaleFactor - 1);
+		return new Point(Mouse.getX() / scaleFactor, minecraft.displayHeight / scaleFactor - Mouse.getY() / scaleFactor - 1);
 	}
 
 }

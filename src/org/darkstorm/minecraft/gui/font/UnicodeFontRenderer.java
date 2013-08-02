@@ -5,8 +5,7 @@ import static org.lwjgl.opengl.GL11.*;
 import java.awt.Color;
 import java.awt.Font;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.FontRenderer;
+import net.minecraft.src.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -16,8 +15,7 @@ public class UnicodeFontRenderer extends FontRenderer {
 
 	@SuppressWarnings("unchecked")
 	public UnicodeFontRenderer(Font awtFont) {
-		super(Minecraft.getMinecraft().gameSettings, "/font/default.png",
-				Minecraft.getMinecraft().renderEngine, false);
+		super(Minecraft.getMinecraft().gameSettings, new ResourceLocation("textures/font/ascii.png"), Minecraft.getMinecraft().func_110434_K() /* renderEngine */, false);
 
 		font = new UnicodeFont(awtFont);
 		font.addAsciiGlyphs();

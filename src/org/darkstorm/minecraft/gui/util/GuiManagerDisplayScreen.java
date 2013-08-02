@@ -7,10 +7,10 @@ import net.minecraft.src.GuiScreen;
 import org.darkstorm.minecraft.gui.GuiManager;
 import org.darkstorm.minecraft.gui.component.*;
 
-public class GuiControls extends GuiScreen {
+public class GuiManagerDisplayScreen extends GuiScreen {
 	private final GuiManager guiManager;
 
-	public GuiControls(GuiManager guiManager) {
+	public GuiManagerDisplayScreen(GuiManager guiManager) {
 		this.guiManager = guiManager;
 	}
 
@@ -22,13 +22,9 @@ public class GuiControls extends GuiScreen {
 				continue;
 			if(!frame.isMinimized() && !frame.getArea().contains(x, y)) {
 				for(Component component : frame.getChildren()) {
-					for(Rectangle area : component.getTheme()
-							.getUIForComponent(component)
-							.getInteractableRegions(component)) {
-						if(area.contains(x - frame.getX() - component.getX(), y
-								- frame.getY() - component.getY())) {
-							frame.onMousePress(x - frame.getX(),
-									y - frame.getY(), button);
+					for(Rectangle area : component.getTheme().getUIForComponent(component).getInteractableRegions(component)) {
+						if(area.contains(x - frame.getX() - component.getX(), y - frame.getY() - component.getY())) {
+							frame.onMousePress(x - frame.getX(), y - frame.getY(), button);
 							guiManager.bringForward(frame);
 							return;
 						}
@@ -44,11 +40,9 @@ public class GuiControls extends GuiScreen {
 				guiManager.bringForward(frame);
 				break;
 			} else if(frame.isMinimized()) {
-				for(Rectangle area : frame.getTheme().getUIForComponent(frame)
-						.getInteractableRegions(frame)) {
+				for(Rectangle area : frame.getTheme().getUIForComponent(frame).getInteractableRegions(frame)) {
 					if(area.contains(x - frame.getX(), y - frame.getY())) {
-						frame.onMousePress(x - frame.getX(), y - frame.getY(),
-								button);
+						frame.onMousePress(x - frame.getX(), y - frame.getY(), button);
 						guiManager.bringForward(frame);
 						return;
 					}
@@ -65,13 +59,9 @@ public class GuiControls extends GuiScreen {
 				continue;
 			if(!frame.isMinimized() && !frame.getArea().contains(x, y)) {
 				for(Component component : frame.getChildren()) {
-					for(Rectangle area : component.getTheme()
-							.getUIForComponent(component)
-							.getInteractableRegions(component)) {
-						if(area.contains(x - frame.getX() - component.getX(), y
-								- frame.getY() - component.getY())) {
-							frame.onMouseRelease(x - frame.getX(),
-									y - frame.getY(), button);
+					for(Rectangle area : component.getTheme().getUIForComponent(component).getInteractableRegions(component)) {
+						if(area.contains(x - frame.getX() - component.getX(), y - frame.getY() - component.getY())) {
+							frame.onMouseRelease(x - frame.getX(), y - frame.getY(), button);
 							guiManager.bringForward(frame);
 							return;
 						}
@@ -87,11 +77,9 @@ public class GuiControls extends GuiScreen {
 				guiManager.bringForward(frame);
 				break;
 			} else if(frame.isMinimized()) {
-				for(Rectangle area : frame.getTheme().getUIForComponent(frame)
-						.getInteractableRegions(frame)) {
+				for(Rectangle area : frame.getTheme().getUIForComponent(frame).getInteractableRegions(frame)) {
 					if(area.contains(x - frame.getX(), y - frame.getY())) {
-						frame.onMouseRelease(x - frame.getX(),
-								y - frame.getY(), button);
+						frame.onMouseRelease(x - frame.getX(), y - frame.getY(), button);
 						guiManager.bringForward(frame);
 						return;
 					}
@@ -102,9 +90,7 @@ public class GuiControls extends GuiScreen {
 
 	@Override
 	public void drawScreen(int par2, int par3, float par4) {
-		Frame[] frames = guiManager.getFrames();
-		for(int i = frames.length - 1; i >= 0; i--)
-			frames[i].render();
+		guiManager.render();
 		super.drawScreen(par2, par3, par4);
 	}
 }

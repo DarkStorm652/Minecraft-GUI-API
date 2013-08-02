@@ -24,6 +24,9 @@
  */
 package org.darkstorm.minecraft.gui;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.darkstorm.minecraft.gui.component.Frame;
 import org.darkstorm.minecraft.gui.theme.Theme;
 
@@ -32,24 +35,74 @@ import org.darkstorm.minecraft.gui.theme.Theme;
  * 
  * @author DarkStorm (darkstorm@evilminecraft.net)
  */
-public interface GuiManager {
-	public void setup();
+public abstract class AbstractGuiManager implements GuiManager {
+	private final List<Frame> frames;
 
-	public void addFrame(Frame frame);
+	private Theme theme;
 
-	public void removeFrame(Frame frame);
+	public AbstractGuiManager() {
+		frames = new CopyOnWriteArrayList<Frame>();
+	}
 
-	public Frame[] getFrames();
+	@Override
+	public abstract void setup();
 
-	public void bringForward(Frame frame);
+	@Override
+	public void addFrame(Frame frame) {
+		frame.setTheme(theme);
+		frames.add(0, frame);
+	}
 
-	public Theme getTheme();
+	@Override
+	public void removeFrame(Frame frame) {
+		frames.remove(frame);
+	}
 
-	public void setTheme(Theme theme);
+	@Override
+	public Frame[] getFrames() {
+		return frames.toArray(new Frame[frames.size()]);
+	}
 
-	public void render();
+	@Override
+	public void bringForward(Frame frame) {
+		if(frames.remove(frame))
+			frames.add(0, frame);
+	}
 
-	public void renderPinned();
+	@Override
+	public Theme getTheme() {
+		return theme;
+	}
 
-	public void update();
+	@Override
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+		for(Frame frame : frames)
+			frame.setTheme(theme);
+		resizeComponents();
+	}
+
+	protected abstract void resizeComponents();
+
+	@Override
+	public void render() {
+		Frame[] frames = getFrames();
+		for(int i = frames.length - 1; i >= 0; i--)
+			frames[i].render();
+	}
+
+	@Override
+	public void renderPinned() {
+		Frame[] frames = getFrames();
+		for(int i = frames.length - 1; i >= 0; i--)
+			if(frames[i].isPinned())
+				frames[i].render();
+	}
+
+	@Override
+	public void update() {
+		Frame[] frames = getFrames();
+		for(int i = frames.length - 1; i >= 0; i--)
+			frames[i].update();
+	}
 }
