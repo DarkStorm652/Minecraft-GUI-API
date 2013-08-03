@@ -11,9 +11,9 @@ Libraries
 ---------
 
 The only library currently required by the project is Slick2D, which can
-be found at [http://www.slick2d.org/]. The dependency upon this library may
+be found at [http://slick.ninjacave.com/]. The dependency upon this library may
 be removed by deletion of UnicodeFontRenderer.java and slight modification
 to SimpleTheme.java to replace the instantiation of UnicodeFontRenderer
 with the instantiation of a normal FontRenderer.
 
-  [http://www.slick2d.org/]: http://www.slick2d.org/
+  [http://slick.ninjacave.com/]: http://slick.ninjacave.com/
