@@ -19,7 +19,7 @@ public class SimpleCheckButtonUI extends AbstractComponentUI<CheckButton> {
 		this.theme = theme;
 
 		foreground = Color.WHITE;
-		background = new Color(128, 128, 128, 128 + 128 / 2);
+		background = new Color(128, 128, 128, 128);
 	}
 
 	@Override
