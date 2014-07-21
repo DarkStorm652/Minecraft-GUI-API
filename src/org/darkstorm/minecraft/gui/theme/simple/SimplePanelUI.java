@@ -11,7 +11,6 @@ import org.darkstorm.minecraft.gui.theme.AbstractComponentUI;
 import org.darkstorm.minecraft.gui.util.RenderUtil;
 
 public class SimplePanelUI extends AbstractComponentUI<Panel> {
-	@SuppressWarnings("unused")
 	private final SimpleTheme theme;
 
 	SimplePanelUI(SimpleTheme theme) {

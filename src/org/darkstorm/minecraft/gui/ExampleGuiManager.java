@@ -27,7 +27,7 @@ package org.darkstorm.minecraft.gui;
 import java.awt.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import net.minecraft.src.Minecraft;
+import net.minecraft.client.Minecraft;
 
 import org.darkstorm.minecraft.gui.component.BoundedRangeComponent.ValueDisplay;
 import org.darkstorm.minecraft.gui.component.*;

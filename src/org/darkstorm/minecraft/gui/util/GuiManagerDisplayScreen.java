@@ -2,7 +2,7 @@ package org.darkstorm.minecraft.gui.util;
 
 import java.awt.Rectangle;
 
-import net.minecraft.src.GuiScreen;
+import net.minecraft.client.gui.GuiScreen;
 
 import org.darkstorm.minecraft.gui.GuiManager;
 import org.darkstorm.minecraft.gui.component.*;
