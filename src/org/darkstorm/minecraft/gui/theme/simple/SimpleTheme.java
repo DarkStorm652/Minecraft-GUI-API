@@ -2,7 +2,7 @@ package org.darkstorm.minecraft.gui.theme.simple;
 
 import java.awt.Font;
 
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.gui.FontRenderer;
 
 import org.darkstorm.minecraft.gui.font.UnicodeFontRenderer;
 import org.darkstorm.minecraft.gui.theme.AbstractTheme;

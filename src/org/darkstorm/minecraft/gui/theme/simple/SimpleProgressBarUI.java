@@ -4,7 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import java.awt.*;
 
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.gui.FontRenderer;
 
 import org.darkstorm.minecraft.gui.component.ProgressBar;
 import org.darkstorm.minecraft.gui.theme.AbstractComponentUI;
