@@ -114,7 +114,7 @@ public class SimpleFrameUI extends AbstractComponentUI<Frame> {
 		}
 		glEnd();
 		glEnable(GL_TEXTURE_2D);
-		theme.getFontRenderer().drawStringWithShadow(component.getTitle(), 2,
+		theme.getFontRenderer().func_175063_a(component.getTitle(), 2,
 				2, RenderUtil.toRGBA(component.getForegroundColor()));
 		glEnable(GL_CULL_FACE);
 		glDisable(GL_BLEND);

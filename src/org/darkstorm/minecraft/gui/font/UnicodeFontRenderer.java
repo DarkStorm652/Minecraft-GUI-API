@@ -76,8 +76,8 @@ public class UnicodeFontRenderer extends FontRenderer {
 	}
 
 	@Override
-	public int drawStringWithShadow(String string, int x, int y, int color) {
-		return drawString(string, x, y, color);
+	public int func_175063_a(String string, float x, float y, int color) {
+		return drawString(string, (int) x, (int) y, color);
 	}
 
 	@Override

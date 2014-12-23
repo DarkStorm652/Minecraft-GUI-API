@@ -15,8 +15,8 @@ public class GuiManagerDisplayScreen extends GuiScreen {
 	}
 
 	@Override
-	protected void mouseClicked(int x, int y, int button) {
-		super.mouseClicked(x, y, button);
+	protected void mouseClicked(int x, int y, int button) throws IOException {
+		super.mouseClicked(x, y, button); // This line throws IOException which is why this method has to have the 'throws' declaration
 		for(Frame frame : guiManager.getFrames()) {
 			if(!frame.isVisible())
 				continue;
@@ -52,8 +52,8 @@ public class GuiManagerDisplayScreen extends GuiScreen {
 	}
 
 	@Override
-	public void mouseMovedOrUp(int x, int y, int button) {
-		super.mouseMovedOrUp(x, y, button);
+	public void mouseReleased(int x, int y, int button) {
+		super.mouseReleased(x, y, button);
 		for(Frame frame : guiManager.getFrames()) {
 			if(!frame.isVisible())
 				continue;
