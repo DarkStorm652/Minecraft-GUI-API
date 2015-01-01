@@ -24,6 +24,8 @@
  */
 package org.darkstorm.minecraft.gui;
 
+import net.minecraft.client.gui.GuiScreen;
+
 import org.darkstorm.minecraft.gui.component.Frame;
 import org.darkstorm.minecraft.gui.theme.Theme;
 
@@ -52,4 +54,6 @@ public interface GuiManager {
 	public void renderPinned();
 
 	public void update();
+
+	public GuiScreen getGuiScreen();
 }
