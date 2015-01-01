@@ -27,8 +27,11 @@ package org.darkstorm.minecraft.gui;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import net.minecraft.client.gui.GuiScreen;
+
 import org.darkstorm.minecraft.gui.component.Frame;
 import org.darkstorm.minecraft.gui.theme.Theme;
+import org.darkstorm.minecraft.gui.util.GuiManagerDisplayScreen;
 
 /**
  * Minecraft GUI API
@@ -104,5 +107,10 @@ public abstract class AbstractGuiManager implements GuiManager {
 		Frame[] frames = getFrames();
 		for(int i = frames.length - 1; i >= 0; i--)
 			frames[i].update();
+	}
+
+	@Override
+	public GuiScreen getGuiScreen() {
+		return new GuiManagerDisplayScreen(this);
 	}
 }
