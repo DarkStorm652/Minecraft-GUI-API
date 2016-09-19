@@ -35,15 +35,7 @@ public class UnicodeFontRenderer extends FontRenderer {
 	public int drawString(String string, int x, int y, int color) {
 		if(string == null)
 			return 0;
-		// glClear(256);
-		// glMatrixMode(GL_PROJECTION);
-		// glLoadIdentity();
-		// IntBuffer buffer = BufferUtils.createIntBuffer(16);
-		// glGetInteger(GL_VIEWPORT, buffer);
-		// glOrtho(0, buffer.get(2), buffer.get(3), 0, 1000, 3000);
-		// glMatrixMode(GL_MODELVIEW);
-		// glLoadIdentity();
-		// glTranslatef(0, 0, -2000);
+			
 		glPushMatrix();
 		glScaled(0.5, 0.5, 0.5);
 
@@ -56,12 +48,11 @@ public class UnicodeFontRenderer extends FontRenderer {
 			glDisable(GL_LIGHTING);
 		if(texture)
 			glDisable(GL_TEXTURE_2D);
+			
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
 		x *= 2;
 		y *= 2;
-		// glBegin(GL_LINES);
-		// glVertex3d(x, y, 0);
-		// glVertex3d(x + getStringWidth(string), y + FONT_HEIGHT, 0);
-		// glEnd();
 
 		font.drawString(x, y, string, new org.newdawn.slick.Color(color));
 
@@ -75,7 +66,7 @@ public class UnicodeFontRenderer extends FontRenderer {
 		return x;
 	}
 
-	@Override
+	@Override // drawStringWithShadow / func_175063_a (depends on mappings)
 	public int func_175063_a(String string, float x, float y, int color) {
 		return drawString(string, (int) x, (int) y, color);
 	}
